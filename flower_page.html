@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D High-Fidelity Scrapbook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #fce7f3; /* Default Pink-ish bg */
+            font-family: 'Playfair Display', serif;
+        }
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(var(--base-rotation, 0deg)); }
+            50% { transform: translateY(-30px) rotate(calc(var(--base-rotation, 0deg) + 4deg)); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(var(--base-rotation, 0deg)) scale(1); }
+            50% { transform: rotate(calc(var(--base-rotation, 0deg) + 8deg)) scale(1.15); }
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.7; }
+            85% { opacity: 0.7; }
+            100% { transform: translate(200px, 150px) rotate(45deg); opacity: 0; }
+        }
+
+        /* Smoother, more elastic pop-in */
+        @keyframes pop-in {
+            0% { 
+                transform: scale(0.4) rotate(calc(var(--base-rotation, 0deg) - 25deg)); 
+                opacity: 0; 
+                filter: blur(4px);
+            }
+            100% { 
+                transform: scale(1) rotate(var(--base-rotation, 0deg)); 
+                opacity: 1; 
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(calc(var(--base-rotation, 0deg) - 4deg)); }
+            50% { transform: rotate(calc(var(--base-rotation, 0deg) + 4deg)); }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.4)) drop-shadow(6px 10px 15px rgba(0,0,0,0.2)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)) drop-shadow(10px 15px 25px rgba(0,0,0,0.3)); }
+        }
+
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-wiggle {
+            animation: wiggle 4.5s ease-in-out infinite;
+        }
+
+        /* High-fidelity elastic easing for the pop */
+        .animate-pop {
+            animation: pop-in 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .animate-sway {
+            animation: sway 7s ease-in-out infinite;
+        }
+
+        .animate-glow {
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        .sticker-shadow {
+            filter: drop-shadow(6px 10px 15px rgba(0,0,0,0.2));
+        }
+        
+        .sticker-hover {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .sticker-hover:hover {
+            transform: scale(1.15) rotate(calc(var(--base-rotation, 0deg) + 10deg)) !important;
+            filter: drop-shadow(15px 25px 35px rgba(0,0,0,0.4)) !important;
+            z-index: 1000 !important;
+        }
+        .gabriola {
+            font-family: 'Gabriola', 'Segoe UI', serif;
+            line-height: 1.1; /* Gabriola has naturally large spacing, this keeps it tight */
+        }
+    </style>
+
+<link rel="stylesheet" href="index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/AAPKA-deewana/assets/index-XYIZDIc0.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>

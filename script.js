@@ -115,5 +115,41 @@ function handleNoClick() {
 
 
 function handleYesClick() {
-    window.location.href = "yes_page.html";
+    // 1. Instant Firecracker Burst
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff0000', '#ffd700', '#ff69b4'] // Red, Gold, Pink
+    });
+
+    // 2. Side "Firecracker" Cannons
+    const duration = 1.5 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 7,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: ['#ffb6c1', '#ff1493']
+        });
+        confetti({
+            particleCount: 7,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: ['#ffb6c1', '#ff1493']
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+
+    // 3. Brief delay to see the celebration, then go to the Yes page
+    setTimeout(() => {
+        window.location.href = "yes_page.html";
+    }, 1200);
 }
